@@ -9,5 +9,6 @@ server {
 
   location / {
     proxy_pass http://unix:/tmp/st01.vassily.pro.socket;
+    proxy_set_header Host $host;
   }
 }
