@@ -1,0 +1,34 @@
+[Unit]
+Description=Gunicorn server for st01.vassily.pro
+
+[Service]
+# Restart process automatically if crashes, user, load env variables from .env
+Restart=on-failure
+User=vldo
+WorkingDirectory=/home/vldo/sites/st01.vassily.pro
+EnvironmentFile=/home/vldo/sites/st01.vassily.pro/.env
+
+ExecStart=/home/vldo/.virtualenvs/ob01/bin/gunicorn \
+    --bind unix:/tmp/st01.vassily.pro.socket \
+    superlists.wsgi:application
+
+[Install]
+# Start on boot
+WantedBy=multi-user.target
+
+============ COPY BELOW +++++++++++
+[Unit]
+Description=Gunicorn server for st01.vassily.pro
+
+[Service]
+Restart=on-failure
+User=vldo
+WorkingDirectory=/home/vldo/sites/st01.vassily.pro
+EnvironmentFile=/home/vldo/sites/st01.vassily.pro/.env
+
+ExecStart=/home/vldo/.virtualenvs/ob01/bin/gunicorn \
+    --bind unix:/tmp/st01.vassily.pro.socket \
+    superlists.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
