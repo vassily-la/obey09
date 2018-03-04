@@ -2,7 +2,7 @@
 Description=Gunicorn server for st01.vassily.pro
 
 [Service]
-# Restart process automatically if crashes, user, load env variables from .env
+# Restart process automatically if crashes, load env variables from .env
 Restart=on-failure
 User=vldo
 WorkingDirectory=/home/vldo/sites/st01.vassily.pro
