@@ -8,7 +8,7 @@ User=vldo
 WorkingDirectory=/home/vldo/sites/st01.vassily.pro
 EnvironmentFile=/home/vldo/sites/st01.vassily.pro/.env
 
-ExecStart=/home/vldo/.virtualenvs/ob01/bin/gunicorn \
+ExecStart=/home/vldo/sites/st01.vassily.pro/virtualenv/bin/gunicorn \
     --bind unix:/tmp/st01.vassily.pro.socket \
     superlists.wsgi:application
 
