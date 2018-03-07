@@ -11,7 +11,7 @@ def _get_latest_source():
     if exists('.git'):
         # 'git fetch' is like 'git pull'
         # But it doesn't immediately update the live source tree
-        print("gls-git")
+        print("gls-fetch")
         run('git fetch')
     else:
         print('gls-clone')
@@ -58,40 +58,52 @@ def _update_database():
     print('upd-db')
     run('./virtualenv/bin/python manage.py migrate --noinput')
 
+
 def deploy():
-    # We can get the username and the host like that
-    # print(env.user)
-    # print(env.host)
-    site_folder = "/home/vldo/sites/st01.vassily.pro/"
-    # site_folder = f"/home/{env.user}/sites/{env.host}"
-    # Run this shell command with 'run'
-    # 'mkdir -p' can create directories several levels deep
-    # Won't complain if it already exists
+    site_folder = f'/home/{env.user}/sites/{env.host}'
     run(f'mkdir -p {site_folder}')
-    # 'cd' is a fabric context manager that says:
-    # Run all the dollowing statements inside this workong dir.
-    # _(leading underscore) indicates they aren't part of public api
-    # print(0)
-    print("before wuith cd")
+    "before with"
     with cd(site_folder):
-        # Pull down source code w/ git. Possible results :
-        ## Do a git clone if fresh deployment
-        ## Do a git fetch + git reset --hard if a previous version is already there
         print('call gls')
         _get_latest_source()
-
-        # Update the virtualenv
         print('call uv')
         _update_virtualenv()
-
-        # Create a new .env file, if necessary
         print('call cud')
         _create_or_update_dotenv()
-
-        # Update static files
         print('call update-static')
         _update_static_files()
-
-        # Migrate the database, if necessary
         print('call update-db')
         _update_database()
+
+# def deploy():
+#     # We can get the username and the host like that
+#     # print(env.user)
+#     # print(env.host)
+#     site_folder = "/home/vldo/sites/st01.vassily.pro/"
+#     # site_folder = f"/home/{env.user}/sites/{env.host}"
+#     # Run this shell command with 'run'
+#     # 'mkdir -p' can create directories several levels deep
+#     # Won't complain if it already exists
+#     run(f'mkdir -p {site_folder}')
+#     # 'cd' is a fabric context manager that says:
+#     # Run all the dollowing statements inside this workong dir.
+#     # _(leading underscore) indicates they aren't part of public api
+#     # print(0)
+#     print("before wuith cd")
+#     with cd(site_folder):
+#         # Pull down source code w/ git. Possible results :
+#         ## Do a git clone if fresh deployment
+#         ## Do a git fetch + git reset --hard if a previous version is already there
+#         _get_latest_source()
+#
+#         # Update the virtualenv
+#         _update_virtualenv()
+#
+#         # Create a new .env file, if necessary
+#         _create_or_update_dotenv()
+#
+#         # Update static files
+#         _update_static_files()
+#
+#         # Migrate the database, if necessary
+#         _update_database()
