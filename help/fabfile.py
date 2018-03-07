@@ -48,7 +48,7 @@ def deploy():
     # We can get the username and the host like that
     print(env.user)
     print(env.host)
-    site_folder = /home/vldo/sites/{env.host}/
+    site_folder = "/home/vldo/sites/{env.host}/"
     # site_folder = f"/home/{env.user}/sites/{env.host}"
     # Run this shell command with 'run'
     # 'mkdir -p' can create directories several levels deep
