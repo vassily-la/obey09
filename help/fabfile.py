@@ -7,6 +7,7 @@ REPO_URL = 'https://github.com/vassily-la/obey09.git'
 
 # Pull down source code with git
 def _get_latest_source():
+    print("gls")
     if exists('.git'):
         # 'git fetch' is like 'git pull'
         # But it doesn't immediately update the live source tree
