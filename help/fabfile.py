@@ -67,7 +67,7 @@ def deploy():
     # Run this shell command with 'run'
     # 'mkdir -p' can create directories several levels deep
     # Won't complain if it already exists
-    # run(f'mkdir -p {site_folder}')
+    run(f'mkdir -p {site_folder}')
     # 'cd' is a fabric context manager that says:
     # Run all the dollowing statements inside this workong dir.
     # _(leading underscore) indicates they aren't part of public api
