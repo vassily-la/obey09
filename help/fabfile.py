@@ -8,14 +8,16 @@ REPO_URL = 'https://github.com/vassily-la/obey09.git'
 # Pull down source code with git
 def _get_latest_source():
     print("gls-start")
-    if exists('.git'):
-        # 'git fetch' is like 'git pull'
-        # But it doesn't immediately update the live source tree
-        print("gls-fetch")
-        run('git fetch')
-    else:
-        print('gls-clone')
-        run(f'git clone {REPO_URL} .')
+    # instead of previous
+    run("git fetch")
+    # if exists('.git'):
+    #     # 'git fetch' is like 'git pull'
+    #     # But it doesn't immediately update the live source tree
+    #     print("gls-fetch")
+    #     run('git fetch')
+    # else:
+    #     print('gls-clone')
+    #     run(f'git clone {REPO_URL} .')
     # Fabric's local() command runs a command on your local machine
     # It's like a wrapper around subprocess.call, but it's convenient
     # Here, it captures the ID of the current commit on yr machine.
@@ -61,7 +63,7 @@ def _update_database():
 
 def deploy():
     site_folder = f'/home/{env.user}/sites/{env.host}'
-    run(f'mkdir -p {site_folder}')
+    # run(f'mkdir -p {site_folder}')
     "before with"
     with cd(site_folder):
         print('call gls')
