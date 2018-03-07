@@ -67,7 +67,7 @@ def deploy():
     "before with"
     with cd(site_folder):
         print('call gls')
-        _get_latest_source()
+        # _get_latest_source()
         print('call uv')
         _update_virtualenv()
         print('call cud')
