@@ -46,7 +46,10 @@ def _update_database():
 
 def deploy():
     # We can get the username and the host like that
-    site_folder = f"/home/{env.user}/sites/{env.host}"
+    print(env.user)
+    print(env.host)
+    site_folder = /home/vldo/sites/{env.host}/
+    # site_folder = f"/home/{env.user}/sites/{env.host}"
     # Run this shell command with 'run'
     # 'mkdir -p' can create directories several levels deep
     # Won't complain if it already exists
@@ -54,10 +57,12 @@ def deploy():
     # 'cd' is a fabric context manager that says:
     # Run all the dollowing statements inside this workong dir.
     # _(leading underscore) indicates they aren't part of public api
+    print(0)
     with cd(site_folder):
         # Pull down source code w/ git. Possible results :
         ## Do a git clone if fresh deployment
         ## Do a git fetch + git reset --hard if a previous version is already there
+        print(1)
         _get_latest_source()
 
         # Update the virtualenv
